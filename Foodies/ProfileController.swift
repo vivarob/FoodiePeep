@@ -114,7 +114,6 @@ class ProfileController: UIViewController, UICollectionViewDelegateFlowLayout, U
             } else {
                 self.bioTextView.text = user.bio
             }
-            
             self.dishesArray = user.dishes
             self.dishesCollection.reloadData()
 
