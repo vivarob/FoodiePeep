@@ -7,7 +7,14 @@
 //
 
 import UIKit
+import Firebase
 import CoreData
+
+class lightStatusBarNavigation: UINavigationController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+        Database.database().reference().keepSynced(true)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = lightStatusBarNavigation(rootViewController: HomeView())
         // Override point for customization after application launch.
         return true
     }
